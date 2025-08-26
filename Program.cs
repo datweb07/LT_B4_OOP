@@ -4,7 +4,37 @@
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            IEmployee[] employee = new IEmployee[10];
+
+            Random rand = new Random();
+            for (int i = 0; i < employee.Length; i++)
+            {
+                int check = rand.Next(0, 2);
+                if (check == 0) // TempEmployee
+                {
+                    string ten = $"Temp {i + 1}";
+                    int soNgayLam = rand.Next(20, 50);
+                    double donGia = rand.Next(200000, 800000);
+                    int soGioCanLam = rand.Next(100, 300);
+                    employee[i] = new TempEmployee(ten, soNgayLam, donGia, soGioCanLam);
+                }
+                else  // OfficeEmployee
+                {
+                    string ten = $"Office {i + 1}";
+                    double luongCoBan = rand.Next(8000000, 20000000);
+                    double heSoLuong = rand.Next(2, 4);
+                    double phuCap = rand.Next(0, 3);
+                    int soGioNgoaiHanhChinh = rand.Next(0, 50);
+                    employee[i] = new OfficeEmployee(ten, luongCoBan, heSoLuong, phuCap, soGioNgoaiHanhChinh);
+                }
+            }
+
+            foreach (IEmployee emp in employee)
+            {
+                Console.WriteLine(emp.Print());
+            }
+
+            Console.ReadLine();
         }
     }
 }

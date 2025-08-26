@@ -8,19 +8,49 @@ namespace LT_B4_OOP
 {
     public class TempEmployee : IEmployee
     {
-        public double TinhLuong(double luongCoBan, double heSoLuong, double phuCap)
+        private string ten;
+        private int soNgayLam;
+        private double donGia;
+        private int soGioCanLam;
+
+        public TempEmployee(string ten, int soNgayLam, double donGia, int soGioCanLam)
         {
-            throw new NotImplementedException();
+            this.ten = ten;
+            this.soNgayLam = soNgayLam;
+            this.donGia = donGia;
+            this.soGioCanLam = soGioCanLam;
+        }
+        public double TinhLuong()
+        {
+            return soNgayLam * donGia;
         }
 
-        public void TinhThue()
+        public double TinhThue()
         {
-            throw new NotImplementedException();
+            double luong = TinhLuong();
+            double thue = 0;
+
+            if (luong > 10000000)
+            {
+                thue = (luong - 10000000) * 0.15;
+            }
+            return thue;
         }
 
-        public double TinhThuong(double startTime, double endTime)
+        public double TinhThuong()
         {
-            throw new NotImplementedException();
+            double thuong = 0;
+            if (soGioCanLam > 200)
+            {
+                thuong = (soGioCanLam - 200) * 50000;
+            }
+            return thuong;
         }
+
+        public string Print()
+        {
+            return $"Tên: {ten}, Lương: {TinhLuong()}, Thưởng: {TinhThuong()}, Thuế: {TinhThue()}";
+        }
+
     }
 }
