@@ -4,12 +4,16 @@
     {
         public static void Main(string[] args)
         {
+            Console.Clear();
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
             IEmployee[] employee = new IEmployee[10];
 
             Random rand = new Random();
             for (int i = 0; i < employee.Length; i++)
             {
                 int check = rand.Next(0, 2);
+
                 if (check == 0) // TempEmployee
                 {
                     string ten = $"Temp {i + 1}";
@@ -29,9 +33,23 @@
                 }
             }
 
-            foreach (IEmployee emp in employee)
+            //foreach (IEmployee emp in employee)
+            //{
+            //    Console.WriteLine(emp.Print());
+            //}
+
+            for (int i = 0; i < employee.Length; i++)
             {
-                Console.WriteLine(emp.Print());
+                if (employee[i] is TempEmployee)
+                {
+                    TempEmployee tempEmp = (TempEmployee)employee[i];
+                    Console.WriteLine($"{i + 1}. Temp Employee: Lương = {tempEmp.TinhLuong()}, Thưởng = {tempEmp.TinhThuong()}, Thuế = {tempEmp.TinhThue()}");
+                }
+                else if (employee[i] is OfficeEmployee)
+                {
+                    OfficeEmployee officeEmp = (OfficeEmployee)employee[i];
+                    Console.WriteLine($"{i + 1}. Office Employee: Lương = {officeEmp.TinhLuong()}, Thưởng = {officeEmp.TinhThuong()}, Thuế = {officeEmp.TinhThue()}");
+                }
             }
 
             Console.ReadLine();
