@@ -16,7 +16,7 @@
 
                 if (check == 0) // TempEmployee
                 {
-                    string ten = $"Temp {i + 1}";
+                    string ten = $"Temp";
                     int soNgayLam = rand.Next(20, 50);
                     double donGia = rand.Next(200000, 800000);
                     int soGioCanLam = rand.Next(100, 300);
@@ -24,7 +24,7 @@
                 }
                 else  // OfficeEmployee
                 {
-                    string ten = $"Office {i + 1}";
+                    string ten = $"Office";
                     double luongCoBan = rand.Next(8000000, 20000000);
                     double heSoLuong = rand.Next(2, 4);
                     double phuCap = rand.Next(0, 3);
@@ -33,25 +33,11 @@
                 }
             }
 
-            //foreach (IEmployee emp in employee)
-            //{
-            //    Console.WriteLine(emp.Print());
-            //}
-
             for (int i = 0; i < employee.Length; i++)
             {
-                if (employee[i] is TempEmployee)
-                {
-                    TempEmployee tempEmp = (TempEmployee)employee[i];
-                    Console.WriteLine($"{i + 1}. Temp Employee: Lương = {tempEmp.TinhLuong()}, Thưởng = {tempEmp.TinhThuong()}, Thuế = {tempEmp.TinhThue()}");
-                }
-                else if (employee[i] is OfficeEmployee)
-                {
-                    OfficeEmployee officeEmp = (OfficeEmployee)employee[i];
-                    Console.WriteLine($"{i + 1}. Office Employee: Lương = {officeEmp.TinhLuong()}, Thưởng = {officeEmp.TinhThuong()}, Thuế = {officeEmp.TinhThue()}");
-                }
+                IEmployee emp = employee[i];
+                Console.WriteLine(emp.Print(i + 1));
             }
-
             Console.ReadLine();
         }
     }

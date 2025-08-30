@@ -11,6 +11,6 @@ namespace LT_B4_OOP
         double TinhLuong();
         double TinhThuong();
         double TinhThue();
-        string Print();
+        string Print(int i);
     }
 }

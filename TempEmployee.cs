@@ -13,6 +13,11 @@ namespace LT_B4_OOP
         private double donGia;
         private int soGioCanLam;
 
+        public string Ten { get { return ten; } set { ten = value; } }
+        public int SoNgayLam { get { return soNgayLam; } set {  soNgayLam = value; } }
+        public double DonGia { get { return donGia; } set { donGia = value; } }
+        public int SoGioCanLam { get { return soGioCanLam; } set { soGioCanLam = value; } }
+
         public TempEmployee(string ten, int soNgayLam, double donGia, int soGioCanLam)
         {
             this.ten = ten;
@@ -20,10 +25,13 @@ namespace LT_B4_OOP
             this.donGia = donGia;
             this.soGioCanLam = soGioCanLam;
         }
+
         public double TinhLuong()
         {
             return soNgayLam * donGia;
         }
+
+       
 
         public double TinhThue()
         {
@@ -47,9 +55,9 @@ namespace LT_B4_OOP
             return thuong;
         }
 
-        public string Print()
+        public string Print(int i)
         {
-            return $"Tên: {ten}, Lương: {TinhLuong()}, Thưởng: {TinhThuong()}, Thuế: {TinhThue()}";
+            return $"{i}. {ten}, Lương: {Math.Round(TinhLuong(), 2)}, Thưởng: {Math.Round(TinhThuong(), 2)}, Thuế: {Math.Round(TinhThue(), 2)}";
         }
 
     }

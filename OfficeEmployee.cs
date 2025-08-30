@@ -14,6 +14,12 @@ namespace LT_B4_OOP
         private double phuCap;
         private int soGioNgoaiHanhChinh;
 
+        public string Ten { get { return ten; } set { ten = value; } }
+        public double LuongCoBan { get { return luongCoBan; } set { luongCoBan = value; } }
+        public double HeSoLuong { get { return heSoLuong; } set { heSoLuong = value; } }
+        public double PhuCap { get { return phuCap; } set { phuCap = value; } }
+        public int SoGioNgoaiHanhChinh { get { return soGioNgoaiHanhChinh; } set { soGioNgoaiHanhChinh = value; } }
+
         public OfficeEmployee(string ten, double luongCoBan, double heSoLuong, double phuCap, int soGioNgoaiHanhChinh)
         {
             this.ten = ten;
@@ -22,6 +28,7 @@ namespace LT_B4_OOP
             this.phuCap = phuCap;
             this.soGioNgoaiHanhChinh = soGioNgoaiHanhChinh;
         }
+
         public double TinhLuong()
         {
             return luongCoBan * (heSoLuong + phuCap);
@@ -32,30 +39,27 @@ namespace LT_B4_OOP
             return soGioNgoaiHanhChinh * 100000;
         }
 
+
         public double TinhThue()
         {
             double luong = TinhLuong();
             double thue = 0;
-            if (luong > 10000000)
+            if (luong > 10000000  & luong <= 20000000)
             {
-                if (luong <= 20000000)
-                {
-                    // Đóng thuế 10% cho phần vượt 10 triệu
-                    thue = (luong - 10000000) * 0.1;
-                }
-                else
-                {
-                    // Đóng thuế 10% cho phần từ 10-20 triệu và 15% cho phần vượt 20 triệu
-                    thue = (20000000 - 10000000) * 0.1 + (luong - 20000000) * 0.15;
-                }
+                thue = (luong - 10000000) * 0.1;
+            }
+            else
+            {
+                thue = (20000000 - 10000000) * 0.1 + (luong - 20000000) * 0.15;
             }
             return thue;
         }
 
-        public string Print()
-        {
-            return $"Tên: {ten}, Lương: {TinhLuong()}, Thưởng: {TinhThuong()}, Thuế: {TinhThue()}";
-        }
+        
 
+        public string Print(int i)
+        {
+            return $"{i}. {ten}, Lương: {Math.Round(TinhLuong(), 2)}, Thưởng: {Math.Round(TinhThuong(), 2)},Thuế: {Math.Round(TinhThue(), 2)}";
+        }
     }
 }
